@@ -1,16 +1,20 @@
 package chunks
 
 func chunks(xs []string, chunkSize int) [][]string {
+	if len(xs) == 0 {
+		return nil
+	}
 	divided := make([][]string, (len(xs)+chunkSize-1)/chunkSize)
-	i := chunkSize
-	j := 0
-	for ; i < len(xs); i += chunkSize {
-		divided[j] = xs[i-chunkSize : i]
-		j++
+	prev := 0
+	i := 0
+	till := len(xs) - chunkSize
+	for prev < till {
+		next := prev + chunkSize
+		divided[i] = xs[prev:next]
+		prev = next
+		i++
 	}
-	if i-chunkSize < len(xs) {
-		divided[j] = xs[i-chunkSize : len(xs)]
-	}
+	divided[i] = xs[prev:len(xs)]
 	return divided
 }
 
