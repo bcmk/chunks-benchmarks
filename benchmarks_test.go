@@ -1,7 +1,6 @@
 package chunks
 
 import (
-	"math/rand"
 	"reflect"
 	"testing"
 )
@@ -9,15 +8,6 @@ import (
 var s1 = make([]string, 450)
 var s2 = make([]string, 5000)
 var s3 = make([]string, 15000)
-
-func randomString(n int) string {
-	b := make([]byte, n)
-	_, err := rand.Read(b)
-	if err != nil {
-		panic(err)
-	}
-	return string(b)
-}
 
 func DoBenchmarks(f func(s []string, chunkSize int) [][]string) {
 	f(s1, 20)

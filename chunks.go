@@ -14,7 +14,7 @@ func chunks(xs []string, chunkSize int) [][]string {
 		prev = next
 		i++
 	}
-	divided[i] = xs[prev:len(xs)]
+	divided[i] = xs[prev:]
 	return divided
 }
 
