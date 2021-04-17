@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestSql(t *testing.T) {
+func TestChunks(t *testing.T) {
 	xs := []string{"a", "b", "c", "d", "e", "f"}
 	ys := chunks(xs, 1)
 	zs := [][]string{{"a"}, {"b"}, {"c"}, {"d"}, {"e"}, {"f"}}
@@ -36,5 +36,17 @@ func TestSql(t *testing.T) {
 	zs = [][]string{{"a", "b", "c", "d", "e", "f"}}
 	if !reflect.DeepEqual(ys, zs) {
 		t.Errorf("%v is not equal to %v", ys, zs)
+	}
+}
+
+func TestEquality(t *testing.T) {
+	if !reflect.DeepEqual(chunks(s1, 100), chunks2(s1, 100)) {
+		t.Error()
+	}
+	if !reflect.DeepEqual(chunks(s2, 100), chunks2(s2, 100)) {
+		t.Error()
+	}
+	if !reflect.DeepEqual(chunks(s3, 100), chunks2(s3, 100)) {
+		t.Error()
 	}
 }

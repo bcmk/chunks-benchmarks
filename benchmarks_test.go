@@ -1,7 +1,6 @@
 package chunks
 
 import (
-	"reflect"
 	"testing"
 )
 
@@ -33,15 +32,4 @@ func Benchmark2(b *testing.B) {
 		DoBenchmarks(chunks2)
 	}
 	b.ReportAllocs()
-}
-func TestEquality(t *testing.T) {
-	if !reflect.DeepEqual(chunks(s1, 100), chunks2(s1, 100)) {
-		t.Error()
-	}
-	if !reflect.DeepEqual(chunks(s2, 100), chunks2(s2, 100)) {
-		t.Error()
-	}
-	if !reflect.DeepEqual(chunks(s3, 100), chunks2(s3, 100)) {
-		t.Error()
-	}
 }
